@@ -7,20 +7,21 @@ function Form({ addTodo }) {
     setTaskInput(event.target.value);
   };
 
+  const handleClickSubmit = (event) => {
+    event.preventDefault();
+    setTaskInput("");
+  };
+
   return (
     <>
-      <form>
+      <form onSubmit={handleClickSubmit}>
         <input
           type="text"
           value={taskInput}
           onChange={handleChange}
           placeholder="Digite sua task"
         />
-        <button
-          onClick={() => (taskInput && addTodo(taskInput), setTaskInput(""))}
-        >
-          Add Task
-        </button>
+        <button onClick={() => addTodo(taskInput)}>Add Task</button>
       </form>
     </>
   );
